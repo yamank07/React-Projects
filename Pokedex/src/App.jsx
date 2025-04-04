@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 // import "./components/style.css";
-import "./App.css"
+import "./App.css";
 import { PokemonCard } from "./components/PokemonCard";
 
 const API = "https://pokeapi.co/api/v2/pokemon?limit=30";
@@ -22,13 +22,13 @@ const App = () => {
       const allAPIs = data1.results.map(async (currData) => {
         const res2 = await fetch(currData.url);
         const data2 = await res2.json();
-        setLoading(false);
         return data2;
       });
       //   console.log(detailedPokData);
 
       const detailedRes = await Promise.all(allAPIs);
       setPokemon(detailedRes);
+      setLoading(false);
       //   console.log(detailedRes);
     } catch (err) {
       console.log(err.message);
