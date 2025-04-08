@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaGooglePlusG, FaLinkedinIn } from "react-icons/fa";
 import { CiUser } from "react-icons/ci";
 import { MdOutlineEmail, MdOutlineLock } from "react-icons/md";
+import axios from "axios";
 
 export const SignUp = () => {
   const [userReg, setUserReg] = useState({
@@ -10,56 +11,32 @@ export const SignUp = () => {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleInputReg = (e) => {
     const { name, value } = e.target;
     setUserReg((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleOnSubmitReg = (e) => {
-    e.preventDefault();
-    const regData = {
-      username: userReg.username,
-      email: userReg.email,
-      password: userReg.password,
-    };
-    console.log(regData);
-    setUserReg({ username: "", email: "", password: "" });
+  const updateDB = (data) => {
+    axios
+      .post("http://localhost:3000/loginCred", data)
+      .catch((err) => console.log(err));
   };
 
-  //   let signIn = false;
-  //   let signUp = true;
-  //   const handleSignIn = () => {
-  //     if (!signIn) {
-  //       signIn = true;
-  //       signUp = false;
-  //       const signInCont = document.querySelector(".signIn");
-  //       const registerCont = document.querySelector(".register");
-  //       const signUpCont = document.querySelector(".signUp");
-  //       const loginCont = document.querySelector(".login");
-  //       signInCont.style.transform = "translateX(90%)";
-  //         signInCont.style.display = "none";
-  //         signInCont.style.zIndex = "0";
-  //       signUpCont.style.transform = "translateX(0%)";
-  //         signInCont.style.display = "block";
-  //     }
-  //   };
-  //   const handleSignUp = () => {
-  //     if (!signIn) {
-  //       signIn = false;
-  //       signUp = true;
-  //       const signInContainer = document.querySelector(".signIn");
-  //       const signUpContainer = document.querySelector(".signUp");
-  //       signInContainer.style.transform = "translateX(0%)";
-  //       signInContainer.style.display = "block";
-  //       signUpContainer.style.transform = "translateX(185.5%)";
-  //       signInContainer.style.display = "none";
-  //     }
-  //   };
+  const handleOnSubmitReg = (e) => {
+    e.preventDefault();
+    console.log("Adding your data to the db...");
+    updateDB(userReg);
+    console.log("Your data has been added successfully, please Signin.");
+    setUserReg({ username: "", email: "", password: "" });
+    navigate("/signin");
+  };
+
   return (
     <>
       <div className="w-vw h-wh bg-gray-700 p-15">
-        <div className="w-[80%] h-170 m-auto">
+        <div className="w-[80%] h-195 m-auto flex flex-col justify-center items-center">
           <section className="w-[100%] h-[100%] flex relative">
             <div className="absolute z-3 top-3 left-3 border-2 border-gray-600 p-1">
               <span className="text-white text-lg font-bold bg-gray-600 px-1">
@@ -90,11 +67,11 @@ export const SignUp = () => {
               </NavLink>
             </section>
             <section
-              className="register w-[65%] z-0 h-[100%] flex flex-col justify-center items-center bg-gray-500 text-white"
+              className="register w-[65%] z-0 h-[100%] flex flex-col justify-center items-center bg-gray-500/50 text-white"
               // style={{transform: "translateX(0)", display: "block", zIndex: "2"}}
             >
-              <h1 className="text-5xl my-10 font-bold">Create Account</h1>
-              <div className="my-5 flex gap-2">
+              <h1 className="text-6xl my-10 font-bold">Create Account</h1>
+              <div className="my-5 flex gap-4">
                 <NavLink className="p-3 border-1 border-gray-200 rounded-4xl ">
                   <FaFacebookF className="size-6" />
                 </NavLink>
@@ -108,7 +85,10 @@ export const SignUp = () => {
               <p className="text-md text-gray-100 my-2">
                 or use your email for registration
               </p>
-              <form onSubmit={handleOnSubmitReg} className="flex flex-col p-5">
+              <form
+                onSubmit={handleOnSubmitReg}
+                className="flex flex-col p-5 gap-3"
+              >
                 <input
                   type="text"
                   name="username"

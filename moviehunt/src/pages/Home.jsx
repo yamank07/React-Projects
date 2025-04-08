@@ -4,7 +4,7 @@ export const Home = () => {
   return (
     <>
       <section className="w-vw h-195 flex flex-col bg-gray-700">
-        <div className="w-[80%] m-auto flex gap-10 p-10">
+        <div className="w-[75%] m-auto flex gap-10 p-2">
           <div className="w-[50%] flex flex-col gap-7 text-white tracking-wider">
             <p className="text-xl font-semibold mt-25">
               EXPLORE THE LATEST IN MOVIE INDUSTRIES
@@ -18,7 +18,7 @@ export const Home = () => {
               like Your <br />
               Ultimate Guide to Must-Watch Content.
             </p>
-            <NavLink to="/movie" className="w-40 px-5 py-4 text-white text-center bg-red-700">
+            <NavLink to="/movie" className="w-40 px-5 py-4 text-white text-center bg-red-600 hover:bg-red-700">
               Explore Now
             </NavLink>
           </div>

@@ -1,0 +1,36 @@
+{
+  "loginCred": [
+    {
+      "id": "0958",
+      "username": "amit",
+      "email": "a@gmail.com",
+      "password": "amit"
+    },
+    {
+      "id": "36a1",
+      "username": "yaman",
+      "email": "y@gmail.com",
+      "password": "yaman"
+    },
+    {
+      "id": "21a5",
+      "username": "harish",
+      "email": "h@gmail.com",
+      "password": "harish"
+    },
+    {
+      "id": "ff32",
+      "username": "subu",
+      "email": "s@gmail.com",
+      "password": "subu"
+    }
+  ],
+  "contact": [
+    {
+      "id": "2e5f",
+      "username": "Yaman",
+      "email": "yam@gmail.com",
+      "message": "My 1st message"
+    }
+  ]
+}

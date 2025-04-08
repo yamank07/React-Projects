@@ -10,12 +10,20 @@ import { getMovieDetails } from "./api/getMovieDetails";
 import { Contact } from "./pages/Contact";
 import { Cart } from "./pages/Cart";
 import { SignIn } from "./pages/Signin";
-import { SignUp } from "./pages/Signup";
+import { SignUp } from "./pages/SignUp";
 import "./index.css";
 import "./App.css";
 
 const App = () => {
   const router = createBrowserRouter([
+    {
+      path: "/signin",
+      element: <SignIn />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
+    },
     {
       path: "/",
       element: <Layout />,
@@ -25,14 +33,14 @@ const App = () => {
           path: "/",
           element: <Home />,
         },
-        {
-          path: "/signin",
-          element: <SignIn />,
-        },
-        {
-          path: "/signup",
-          element: <SignUp />,
-        },
+        // {
+        //   path: "/signin",
+        //   element: <SignIn />,
+        // },
+        // {
+        //   path: "/signup",
+        //   element: <SignUp />,
+        // },
         {
           path: "/about",
           element: <About />,

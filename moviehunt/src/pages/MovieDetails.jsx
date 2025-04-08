@@ -7,19 +7,19 @@ export const MovieDetails = () => {
   const {
     Title,
     Poster,
-    BoxOffice,
-    imdbRating,
     Type,
     Year,
+    Plot,
     Awards,
-    Released,
-    Language,
     Runtime,
-    Genre,
-    Writer,
+    BoxOffice,
+    imdbRating,
     Director,
     Actors,
-    Plot,
+    Genre,
+    Writer,
+    Language,
+    Released,
   } = loaderData;
 
   const rateBGColor = {
@@ -37,8 +37,8 @@ export const MovieDetails = () => {
 
   return (
     <>
-      <section className="w-vw h-195 p-5 bg-gray-700">
-        <h1 className="text-5xl text-white pb-5 font-bold text-center mDetails">
+      <section className="w-vw h-195 p-5 text-white bg-gray-700">
+        <h1 className="text-5xl pb-5 font-bold text-center mDetails">
           {Title}
         </h1>
         <div className="max-w-[70%] p-5 m-auto flex justify-evenly">
@@ -51,12 +51,12 @@ export const MovieDetails = () => {
               />
             </figure>
           </div>
-          <section className="flex flex-col gap-3 p-5 mx-10 bg-gray-200">
+          <section className="flex flex-col gap-3 p-5 mx-10 bg-gray-200/20">
             <h1 className="text-3xl font-bold text-center mDetails">
               Movie Info
             </h1>
-            <div className="flex justify-center p-2 text-gray-800">
-              <div className="w-50 flex justify-evenly items-center">
+            <div className="flex justify-center p-2">
+              <div className="flex justify-evenly items-center">
                 <p
                   className="text-lg font-bold px-4 py-2 rounded-4xl"
                   style={rateBGColor}
@@ -104,14 +104,14 @@ export const MovieDetails = () => {
             <div className="flex justify-around">
               <NavLink
                 to="/movie"
-                className=" w-70 m-auto py-4 text-lg text-center text-white font-semibold rounded-4xl"
+                className=" w-70 m-auto py-4 text-lg text-center border text-white font-semibold rounded-4xl"
                 style={rateBGColor}
               >
                 Go Back
               </NavLink>
               <NavLink
                 to="/cart"
-                className=" w-70 m-auto py-4 text-lg text-center text-white font-semibold rounded-4xl bg-red-500"
+                className=" w-70 m-auto py-4 text-lg text-center border text-white font-semibold rounded-4xl bg-red-500 hover:bg-red-600"
               >
                 Add to Cart
               </NavLink>
